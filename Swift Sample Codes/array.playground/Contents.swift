@@ -14,7 +14,7 @@ print("Index 1 : \(array1[1])")
 array1[0] = 4
 print(array1)
 
-array1.insert(10, at: 3)
+array1.insert(10, at: 2)
 print(array1)
 
 array1.remove(at: 3)
@@ -30,7 +30,9 @@ print(array2)
 
 var array3 = array1 + array2
 print(array3)
+type(of: array3) //
 
+array3[2...4]
 
 // For Loop
 

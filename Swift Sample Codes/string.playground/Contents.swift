@@ -7,9 +7,10 @@ var randStr2 = " and here is another"
 var randStr3 = randStr + randStr2
 print("Length : \(randStr3.characters.count)")
 
+randStr3.startIndex
 print("First : \(randStr3[randStr3.startIndex])")
 
-let index5 = randStr3.index(randStr3.startIndex, offsetBy: 5)
+let index5 = randStr3.index(randStr3.startIndex, offsetBy: 6)
 print("5th : \(randStr3[index5])")
 
 print("Empty : \(randStr.isEmpty)")
@@ -22,7 +23,7 @@ randStr2.insert(contentsOf: "string ".characters, at:
 print(randStr2)
 
 let startIndex = randStr2.index(randStr2.startIndex, offsetBy: 2)
-let endIndex = randStr2.index(randStr2.startIndex, offsetBy: 9)
+let endIndex = randStr2.index(randStr2.startIndex, offsetBy: 12)
 let stringRange = startIndex ..< endIndex
 //print(stringRange)
 let subStr = randStr2.substring(with: stringRange)

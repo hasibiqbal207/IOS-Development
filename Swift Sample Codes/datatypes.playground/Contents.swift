@@ -9,7 +9,9 @@ var world: String = "Pranto"
 
 var msg = hello + " " + world
 
-print("I'm \(world)")
+print("I'm \(world) \(hello)")
+
+var fruits: [Any] = ["pears", "mango", 2]
 
 
 // Data Types
@@ -46,7 +48,8 @@ var pi7: Int = 5
 
 var pi8: Double = 3.5
 
-var pi9 = Double(pi7) + pi8
+
+var pi9 = Double(pi7) + pi8  // Type Casting of pi7
 
 print("3 : \(Int(3.24))")
 

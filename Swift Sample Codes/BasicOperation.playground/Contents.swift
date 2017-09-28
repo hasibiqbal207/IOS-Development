@@ -13,7 +13,7 @@ print("(4 + 5) * 10 = \((4 + 5) * 10)")
 
 var randNum: Int = 5
 randNum += 1
-print(randNum)
+print("\(randNum)")
 randNum -= 1
 print(randNum)
 

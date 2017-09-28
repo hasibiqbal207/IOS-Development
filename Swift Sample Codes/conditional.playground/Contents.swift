@@ -3,7 +3,7 @@
 import Cocoa
 import Darwin
 
-/*
+
 var age: Int = 8
 
 if age < 5 {
@@ -25,7 +25,7 @@ var gpa: Double = 3.9
 print("Get Grant : \((income < 1500) || (gpa >= 3.8))")
 
 print("Not True : \(!true)")
-*/
+
 
  // Ternary Operator
 
@@ -37,12 +37,13 @@ var canDrive: Bool = bage >= 16 ? true : false
 let ingredient = "pizza"
 
 switch ingredient {
-    case "tomato", "pasta":
+    case "tomato", "pizza":
         print("Not Today")
         fallthrough // Works Like Break
     
     case "pizza":
         print("Sause Please")
+        break
     
 default:
     print("Water")
