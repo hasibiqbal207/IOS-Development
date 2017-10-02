@@ -58,7 +58,6 @@ print("3 : \(Int(3.24))")
 ## Basic Operation
 
 ```
-//: Playground - noun: a place where people can play
 import Darwin
 import Cocoa
 
@@ -94,8 +93,6 @@ print("log(2.718) = \(log(2.718) )")
 ## Conditional
 
 ``` 
-//: Playground - noun: a place where people can play
-
 import Cocoa
 import Darwin
 
@@ -160,8 +157,6 @@ default:
 ## Array
 
 ```
-//: Playground - noun: a place where people can play
-
 import Cocoa
 
 var array1 = [Int]()
@@ -251,8 +246,6 @@ print("Magic Number was \(magicNum)")
 ## String
 
 ```
-//: Playground - noun: a place where people can play
-
 import Cocoa
 
 var randStr = "This is a random string"
@@ -287,3 +280,367 @@ if let hereMatch = randStr2.range(of: "here"){
 }
 print(randStr2)
 ```
+
+
+## Function
+
+```
+import Cocoa
+import Foundation
+
+func showMessage(pageName: String)
+{
+    print("Welcome to Florists, you are now on our \(pageName) page")
+}
+
+showMessage(pageName: "Intro")
+
+showMessage(pageName: "Home")
+
+showMessage(pageName: "About Us")
+
+
+// Passing array of string as a parameter of function
+
+func playSong(lines: [String])
+{
+    let choruses = ["I love you", "I miss you", "I'll always be there for you"]
+    
+    for line in lines
+    {
+        print("\n\n" + line)
+        
+        for chorus in choruses {
+            print(chorus)
+        }
+    }
+}
+
+var family = ["Mum", "Dad", "Wife", "Kids"]
+playSong(lines: family)
+
+
+// Multiple parameter
+
+func addTwoNumbers(first: Int,second: Int)
+{
+    print("The sum of the two numbers is \(first+second)")
+}
+
+addTwoNumbers(first: 5, second: 10)
+
+
+// Returning Values From Function
+
+func addThreeNumbers(first: Int,second: Int,third: Int) -> Int
+{
+    return first+second+third
+}
+
+let sum1 = addThreeNumbers(first: 5, second: 10, third: 3)
+
+
+// Calling a Function from another function
+
+func splitNumber(number: Int) -> Int
+{
+    var singleNumber = 0
+    var array: [Int] = []
+    var newNumber = number
+    
+    while newNumber > 10 {
+        singleNumber = newNumber % 10
+        array.append(singleNumber)
+        newNumber /= 10
+    }
+    array.append(newNumber)
+    
+    let reversed = reverse(numberArray: array)
+    let sum = add(reversed: reversed)
+    
+    return sum
+}
+
+func reverse(numberArray: [Int]) -> [Int]
+{
+    return numberArray.reversed()
+}
+
+func add(reversed: [Int]) -> Int
+{
+    var sum = 0
+    for i in 0..<reversed.count
+    {
+        sum += reversed[i]
+    }
+    return sum
+}
+
+splitNumber(number: 123456)
+```
+
+
+## Dictionary
+
+```
+import Cocoa
+import Foundation
+
+
+// Syntax for declaring Dictonary
+let measurements = ["bedroom" : 150, "kithcen" : 120, "living" : 300, "bathroom" : 230]
+
+let details = ["name" : "John Doe"]
+
+let measurements1: [String : Int] = ["bedroom" : 150, "kithcen" : 120, "living" : 300, "bathroom" : 230]
+
+// Declaring Empty Dictionary
+var measurements2: [String : Int] = [:]
+    
+measurements2 = [
+    "bedroom" : 150,
+    "kithcen" : 120,
+    "living" : 300,
+    "bathroom" : 230]
+
+var measurements3 = [1 : "A", 2 : "B" ]
+
+// Retriving data from Dictionary
+measurements2["bedroom"]
+
+measurements3[1]
+
+// Adding New Key Pair Value
+measurements3[3] = "C"
+
+measurements3
+
+type(of : measurements3)
+
+// Update Value
+
+let checkvalue = measurements3.updateValue("pranto", forKey: 3)    // It return its previous value
+
+measurements3.updateValue("Joarder", forKey: 4)   // Doesn't throw any error, it'll simply add this to the dictionary
+
+measurements3
+
+// Removing value from dictionary
+
+measurements3
+
+measurements3.removeValue(forKey: 1)
+measurements3[2] = nil
+
+measurements3
+
+// Useful Dictionary methods
+
+measurements3.keys
+measurements3.values
+
+// Conversion of dictionary to array
+var measurekeys = Array(measurements3.keys)
+var measurevalues = Array(measurements3.values)
+
+// Print Dictionary using loop
+
+for (key,value) in measurements3 {
+    print("\(key) : \(value)")
+}
+```
+
+
+
+## Optional
+
+```
+import Cocoa
+import Foundation
+
+
+// Returning nil from a func
+func getIndex(name: String, array: [String]) -> Int?
+{
+    for i in 0..<array.count
+    {
+        if array[i] == name
+        {
+            return i
+        }
+    }
+    return nil
+}
+
+
+var names = ["dee", "ray", "tony", "richard"]
+let index: Int?         // Optioanl Int Declaration
+index = getIndex(name: "tony", array: names)
+
+
+/*
+let value = index + 2
+This would give error as index is wrapped with optional
+to use it , we have to unwrap index
+*/
+
+// Unwrapping Int Variable
+
+if let value = index
+{
+    print(value + 2)
+}
+else
+{
+    print("value is nil")
+}
+
+// Unwrapping String optional
+
+var politicalParty: String?
+politicalParty = "Independent"
+
+
+if politicalParty != nil {
+    let party = politicalParty!
+    print("Party : \(party)")
+}
+
+if let party = politicalParty {
+    print("Party : \(party)")
+} else {
+    print("No Party")
+}
+
+let party = politicalParty ?? "No Party"
+print(party)
+
+// Force unwrapping optional type
+
+if index == nil
+{
+    print("index is nil so we can't use this value")
+}
+else
+{
+    print(index! + 2)
+}
+
+
+// Force unwrap of String optional
+
+func returnMood(score: Int) -> String?
+{
+    switch score {
+    case 0...3:
+        return "Sad"
+    case 4...6:
+        return "OK"
+    case 7...8:
+        return "Great"
+    case 9...10:
+        return "Brilliant"
+    default:
+        return nil
+    }
+}
+
+let mood: String?
+mood = returnMood(score: 7)
+
+if mood != nil
+{
+    "Todays mood is " + mood!
+}
+
+// Implicit Unwrapped conditionals with !
+
+var value: Int!
+var dict = ["heartrate" : 73]
+
+value = dict.updateValue(65, forKey: "heartrate")   // But It'll crash if nil is returned. That is why use of implicit unwraping of conditional is risky
+
+
+// Nil COALESCING OPERATOR
+
+var names1 = ["dee", "ray", "tony"]
+let index1: Int?
+
+index1 = getIndex(name: "ray", array: names1) ?? -999
+
+
+// Unwrap multiple optional values in one single line of code separated by comma
+
+let day: String? = "monday"
+let mood_now :String? = "Happy"
+let activity :String? = "Running"
+
+if let dayvalue = day, let moodvalue = mood_now, let activityvalue = activity
+{
+    print("Values are \(dayvalue) \(moodvalue)   \(activityvalue)")
+}
+
+// Optional Chaining
+
+/*
+ From Apple Doc
+ Optional chaining is a process for querying and calling properties, methods and subscripts on an optional that might currently be nil. 
+ If the optional contains a value, the property, method or subscript call succeds.
+ If the optional is nil, the property, method or subscript call returns nil.
+ Multiple queries can be chained together and the entire chain fails gracefully if any link in the chain is nil
+*/
+
+func getDict() -> [String:[String]]?
+{
+    return ["friends" : ["ray","tony"], "foes" : ["james","bob","dilan"] ]
+}
+
+// The above function will return a dictionary so lets use the return value
+
+let dictvalue = getDict()
+
+// Let us extract the array of friends
+
+let friends = dictvalue!["friends"]
+
+// Now let's count the number of friends
+
+friends!.count
+
+// But what if getDict returns nil or array of friends is nil
+// We need to perform multiple checks. Multiple checks include
+
+if let dictionaryvalue = dictvalue
+{
+    let friends = dictionaryvalue["friends"]
+}
+
+// Optional chaining allows us to use a question mark before calling on the method e.g array?.count . The question mark between the array and count says "everything after the question mark will only run if the code before the question mark has a value
+
+// We can elegantly perform all these checks with one line of code
+
+let count = getDict()?["friends"]?.count
+
+/* Three Types of Variable Type
+1. Global Variable
+2. Local Variable
+3. Optionally bound Variable
+*/
+```
+
+
+## Tuple
+
+```
+import Cocoa
+
+let height: Double = 6.25
+let weight: Int = 175
+
+let myData = (height, weight)
+print("Height : \(myData.0)")
+
+let myData2 = (height: 6.25, weight: 175)
+print("Weight: \(myData2.weight)")
+```
+
